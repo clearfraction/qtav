@@ -82,7 +82,7 @@ find %{buildroot} -name \*.a -exec rm {} \;
 
 
 # duplicate files
-rm -rf  %{buildroot}//usr/share/doc
+rm -rf  %{buildroot}/usr/share/doc
 
 
 %files
