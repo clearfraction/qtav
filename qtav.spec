@@ -88,8 +88,8 @@ rm -rf  %{buildroot}//usr/share/doc
 %files
 %license gpl-3.0* lgpl-2.1*
 %doc Changelog README*
-/usr/lib64/qt5/bin/Player
-/usr/lib64/qt5/bin/QMLPlayer
+/usr/bin/Player
+/usr/bin/QMLPlayer
 /usr/share/applications/Player.desktop
 /usr/share/applications/QMLPlayer.desktop
 /usr/share/icons/hicolor/scalable/apps/QtAV.svg
