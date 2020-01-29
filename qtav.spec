@@ -89,12 +89,12 @@ rm -rf  %{buildroot}/usr/share/doc
 
 # Appdata
 mkdir -p %{buildroot}/%{_datadir}/{applications,metainfo}
-install -Dm 0644 %{SOURCE1} %{buildroot}/%{_metainfodir}/%{name}.appdata.xml
+install -Dm 0644 %{SOURCE1} %{buildroot}/usr/share/metainfo/%{name}.appdata.xml
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/Player.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/QMLPlayer.desktop
-appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/*.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}/usr/share/metainfo/*.appdata.xml
 
 %files
 %license gpl-3.0* lgpl-2.1*
