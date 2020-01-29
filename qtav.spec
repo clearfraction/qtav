@@ -71,7 +71,7 @@ convert $f -strip $f
 done
 
 %build
-qmake "CONFIG+=no_rpath recheck" QMAKE_CXXFLAGS+=-fno-lto
+qmake "CONFIG+=no_rpath recheck" QMAKE_CFLAGS+=-fno-lto QMAKE_CXXFLAGS+=-fno-lto
 %make_build
 
 %install
