@@ -7,7 +7,7 @@
 
 Name:           qtav
 Version:        1.13.0
-Release:        1%{?dist}
+Release:        1
 Summary:        Qt multimedia framework
 License:        LGPLv2 AND GPLv3
 Group:          Applications/Multimedia
