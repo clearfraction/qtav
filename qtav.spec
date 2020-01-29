@@ -13,10 +13,13 @@ License:        LGPLv2 AND GPLv3
 Group:          Applications/Multimedia
 URL:            http://qtav.org/
 Source0:	https://github.com/wang-bin/QtAV/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source1:	qtav.appdata.xml
 
 BuildRequires:  ImageMagick-dev
 BuildRequires:  dos2unix
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  appstream-glib-dev
+BuildRequires:	desktop-file-utils
 BuildRequires:  qtbase-dev
 BuildRequires:  portaudio-dev
 BuildRequires:  pkgconfig(Qt5Core)
@@ -48,11 +51,11 @@ QtAV is a multimedia playback library based on Qt and FFmpeg. It can help
 facilitate writing a player application.
 
 
-%package        dev
+%package        devel
 Summary:        Development package for %{name}
 Requires:       %{name} = %{version}-%{release}
 
-%description  dev
+%description  devel
 QtAV is a multimedia playback library based on Qt and FFmpeg.
 
 This package contains the header development files for building some QtAV
@@ -71,7 +74,7 @@ convert $f -strip $f
 done
 
 %build
-qmake "CONFIG+=no_rpath recheck" QMAKE_CFLAGS+=-fno-lto QMAKE_CXXFLAGS+=-fno-lto
+qmake "CONFIG+=no_rpath recheck" QMAKE_CXXFLAGS+=-fno-lto
 %make_build
 
 %install
@@ -84,6 +87,14 @@ find %{buildroot} -name \*.a -exec rm {} \;
 # duplicate files
 rm -rf  %{buildroot}/usr/share/doc
 
+# Appdata
+mkdir -p %{buildroot}/%{_datadir}/{applications,metainfo}
+install -Dm 0644 %{SOURCE1} %{buildroot}/%{_metainfodir}/%{name}.appdata.xml
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/Player.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/QMLPlayer.desktop
+appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/*.appdata.xml
 
 %files
 %license gpl-3.0* lgpl-2.1*
@@ -98,8 +109,9 @@ rm -rf  %{buildroot}/usr/share/doc
 /usr/lib64/libQtAVWidgets.so.*
 /usr/lib64/qt5/mkspecs/
 /usr/lib64/qt5/qml/QtAV/
+/usr/share/metainfo/qtav.appdata.xml
 
-%files dev
+%files devel
 /usr/include/qt5/QtAV/
 /usr/include/qt5/QtAVWidgets/
 /usr/lib64/libQtAV.so
