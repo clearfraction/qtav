@@ -48,11 +48,11 @@ QtAV is a multimedia playback library based on Qt and FFmpeg. It can help
 facilitate writing a player application.
 
 
-%package        devel
+%package        dev
 Summary:        Development package for %{name}
 Requires:       %{name} = %{version}-%{release}
 
-%description  devel
+%description  dev
 QtAV is a multimedia playback library based on Qt and FFmpeg.
 
 This package contains the header development files for building some QtAV
@@ -99,7 +99,7 @@ rm -rf  %{buildroot}/usr/share/doc
 /usr/lib64/qt5/mkspecs/
 /usr/lib64/qt5/qml/QtAV/
 
-%files devel
+%files dev
 /usr/include/qt5/QtAV/
 /usr/include/qt5/QtAVWidgets/
 /usr/lib64/libQtAV.so
