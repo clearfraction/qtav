@@ -94,7 +94,6 @@ rm -rf  %{buildroot}//usr/share/doc
 /usr/share/applications/QMLPlayer.desktop
 /usr/share/icons/hicolor/scalable/apps/QtAV.svg
 /usr/lib64/libQtAV.so.*
-/usr/lib64/libQtAV.so.*
 /usr/lib64/libQtAVWidgets.prl
 /usr/lib64/libQtAVWidgets.so.*
 /usr/lib64/qt5/mkspecs/
